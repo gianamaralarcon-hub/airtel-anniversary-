@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIRTEL CONGO</title>
+    <link rel="icon" type="image/svg+xml" href="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --airtel-red: #c0001a;
+            --airtel-red-bright: #e8001f;
+            --airtel-red-dark: #7a0000;
+            --airtel-red-deep: #9a0015;
+            --gold: #ffb300;
+            --white: #ffffff;
+            --text-dark: #1a0000;
+            --text-gray: #999;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .dp-root {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #7a0000, #c0001a 40%, #e8001f, #9a0015);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .success-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 16px 16px;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============ HEADER ============ */
+        .success-header {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .logo-large img {
+            height: 52px;
+            width: auto;
+            display: block;
+        }
+
+        /* ============ SUCCESS CARD ============ */
+        .success-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 34px 24px 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            color: #1a0000;
+            text-align: center;
+        }
+
+        /* Big success circle */
+        .success-icon-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 22px;
+        }
+
+        .success-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.4);
+            animation: popIn 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            60% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); }
+        }
+
+        .success-icon svg {
+            width: 44px;
+            height: 44px;
+            stroke: #fff;
+            stroke-width: 3;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .success-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 24px;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #1a0000;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+
+        .success-sub {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            max-width: 340px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .success-sub strong {
+            color: #1a0000;
+            font-weight: 800;
+        }
+
+        /* ============ RECEIPT ============ */
+        .receipt {
+            background: #f7f7f7;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 16px;
+            padding: 18px 16px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .receipt-title {
+            font-size: 10.5px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #999;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-size: 13px;
+            padding: 8px 0;
+        }
+
+        .receipt-row:not(:last-child) {
+            border-bottom: 1px dashed #e5e5e5;
+        }
+
+        .receipt-row span:first-child {
+            color: #999;
+            font-weight: 500;
+        }
+
+        .receipt-row span:last-child {
+            color: #1a0000;
+            font-weight: 800;
+            text-align: right;
+            word-break: break-word;
+        }
+
+        .receipt-row .ref {
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            color: var(--airtel-red);
+        }
+
+        /* ============ NOTICE ============ */
+        .notice-box {
+            background: #fffdf5;
+            border: 1.5px solid #ffb300;
+            border-radius: 14px;
+            padding: 14px 16px;
+            margin-bottom: 22px;
+            text-align: left;
+            display: flex;
+            gap: 10px;
+            align-items: flex-start;
+        }
+
+        .notice-icon {
+            font-size: 20px;
+            line-height: 1;
+            flex-shrink: 0;
+            margin-top: 1px;
+        }
+
+        .notice-text {
+            font-size: 12.5px;
+            color: #7a5a00;
+            line-height: 1.55;
+            font-weight: 500;
+        }
+
+        .notice-text strong {
+            color: #5a3f00;
+            font-weight: 800;
+        }
+
+        /* ============ BUTTON ============ */
+        .done-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--airtel-red);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(192, 0, 26, 0.35);
+            text-decoration: none;
+            display: block;
+        }
+
+        .done-button:hover {
+            background: #9a0015;
+            box-shadow: 0 8px 26px rgba(192, 0, 26, 0.45);
+        }
+
+        .done-button:active { transform: scale(0.98); }
+
+        /* ============ FOOTER ============ */
+        .login-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 0 8px;
+            color: #fff;
+            margin-top: 24px;
+        }
+
+        .login-footer img {
+            height: 32px;
+            opacity: 0.8;
+        }
+
+        .login-footer span {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .footer {
+            font-size: 10.5px;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 640px) {
+            .success-container { padding: 40px 24px 24px; }
+            .success-card { padding: 44px 32px 36px; }
+            .success-title { font-size: 28px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dp-root">
+
+        <div class="success-container">
+
+            <div class="success-header">
+                <div class="logo-large">
+                    <img alt="Airtel Logo" src="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+                </div>
+            </div>
+
+            <div class="success-card">
+
+                <div class="success-icon-wrap">
+                    <div class="success-icon">
+                        <svg viewBox="0 0 24 24">
+                            <polyline points="5 13 10 18 20 6"></polyline>
+                        </svg>
+                    </div>
+                </div>
+
+                <h1 class="success-title">Demande Reçue!</h1>
+
+                <p class="success-sub">
+                    Merci — nous avons reçu votre demande pour le forfait <strong id="planDisplay">1GB</strong>. Notre équipe vérifie vos informations. Vous recevrez un SMS de confirmation dès que votre forfait sera activé. Cela prend généralement quelques minutes.
+                </p>
+
+                <div class="receipt">
+                    <p class="receipt-title">Récapitulatif</p>
+                    <div class="receipt-row">
+                        <span>Forfait</span>
+                        <span id="receiptPlan">—</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Validité</span>
+                        <span id="receiptValidity">—</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Montant</span>
+                        <span id="receiptAmount">—</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Téléphone</span>
+                        <span id="receiptPhone">—</span>
+                    </div>
+                    <div class="receipt-row">
+                        <span>Référence</span>
+                        <span class="ref" id="receiptRef">—</span>
+                    </div>
+                </div>
+
+                <div class="notice-box">
+                    <div class="notice-icon">📩</div>
+                    <div class="notice-text">
+                        <strong>Que faire ensuite ?</strong><br>
+                        Gardez votre téléphone près de vous. Vous recevrez un SMS de confirmation dès que votre forfait sera activé.
+                    </div>
+                </div>
+
+                <a href="/" class="done-button">Retour aux Forfaits</a>
+
+            </div>
+
+            <div class="login-footer">
+                <div>
+                    <img alt="Airtel Logo" src="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+                </div>
+                <span>En collaboration avec</span>
+                <span style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,0.85);">STARLINK™</span>
+                <footer class="footer">© 2026 Airtel Congo. Tous droits réservés.</footer>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // Read plan from URL
+        const params = new URLSearchParams(window.location.search);
+        const planName = params.get('plan') || '1GB';
+        const planAmount = params.get('amount') || '';
+        const planUnit = params.get('unit') || '';
+        const planValidity = params.get('validity') || '';
+        const planPrice = parseFloat(params.get('price') || '0');
+        const planPhone = params.get('phone') || '';
+
+        // Build plan display
+        let planDisplay = planName;
+        if (planAmount && planUnit) {
+            planDisplay = planAmount + ' ' + planUnit;
+        } else if (planAmount === '∞') {
+            planDisplay = 'Illimité';
+        }
+
+        // Fill in the receipt
+        document.getElementById('planDisplay').textContent = planDisplay;
+        document.getElementById('receiptPlan').textContent = planDisplay;
+        document.getElementById('receiptValidity').textContent = planValidity || '—';
+        document.getElementById('receiptAmount').textContent = '$' + planPrice.toFixed(2);
+        document.getElementById('receiptPhone').textContent = planPhone ? '+243 ' + planPhone.replace(/^0/, '') : '—';
+
+        // Generate reference
+        const ref = 'AC' + Date.now().toString().slice(-8) + '.' + Math.random().toString(36).substring(2, 6).toUpperCase();
+        document.getElementById('receiptRef').textContent = ref;
+    </script>
+
+</body>
+</html>
