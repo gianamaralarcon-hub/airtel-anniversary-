@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIRTEL CONGO</title>
+    <link rel="icon" type="image/svg+xml" href="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --airtel-red: #c0001a;
+            --airtel-red-bright: #e8001f;
+            --airtel-red-dark: #7a0000;
+            --airtel-red-deep: #9a0015;
+            --gold: #ffb300;
+            --white: #ffffff;
+            --text-dark: #1a0000;
+            --text-gray: #999;
+            --radius: 20px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            margin: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ============ ROOT (red gradient page) ============ */
+        .dp-root {
+            min-height: 100vh;
+            background: linear-gradient(145deg, #7a0000, #c0001a 40%, #e8001f, #9a0015);
+            font-family: 'DM Sans', sans-serif;
+            color: #fff;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ============ HEADER ============ */
+        .dp-header {
+            position: relative;
+            z-index: 10;
+            padding: 20px 20px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .dp-logo-wrap { display: flex; align-items: center; }
+
+        .dp-logo {
+            height: 40px;
+            width: auto;
+            display: block;
+        }
+
+        .dp-collab-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .dp-collab-text {
+            font-size: 9px;
+            color: rgba(255,255,255,0.6);
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .dp-collab-brand {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .dp-starlink-wordmark {
+            font-size: 13px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            color: #fff;
+            font-family: 'Syne', sans-serif;
+        }
+
+        .dp-starlink-logo {
+            height: 18px;
+            width: auto;
+            display: block;
+        }
+
+        .dp-menu-btn {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .dp-menu-btn span {
+            display: block;
+            width: 16px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        /* ============ MAIN ============ */
+        .dp-main {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 16px 32px;
+        }
+
+        /* ============ HERO ============ */
+        .dp-hero {
+            text-align: center;
+            margin-bottom: 28px;
+            padding: 0 8px;
+        }
+
+        .dp-hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #fff;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.25);
+            padding: 7px 14px;
+            border-radius: 999px;
+            margin-bottom: 16px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dp-hero-title {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(28px, 8vw, 42px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            margin-bottom: 12px;
+            color: #fff;
+        }
+
+        .dp-hero-accent {
+            color: var(--gold);
+            display: inline-block;
+        }
+
+        .dp-hero-sub {
+            font-size: 13px;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.6;
+            max-width: 420px;
+            margin: 0 auto;
+        }
+
+        /* ============ GRID ============ */
+        .dp-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+
+        /* ============ CARD (base — white) ============ */
+        .dp-card {
+            position: relative;
+            background: #fff;
+            border: 1.5px solid rgba(192, 0, 26, .1);
+            border-radius: 20px;
+            padding: clamp(16px, 4vw, 22px) clamp(12px, 3vw, 16px) clamp(14px, 3.5vw, 18px);
+            text-align: center;
+            cursor: pointer;
+            transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+            color: #1a0000;
+            font-family: inherit;
+            overflow: hidden;
+            box-shadow: 0 4px 18px #0000001a;
+        }
+
+        .dp-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px #00000033;
+        }
+        .dp-card:active { transform: scale(0.98); }
+
+        /* ============ HIGHLIGHTED CARD (gold border + cream bg) ============ */
+        .dp-card--hot {
+            border: 2px solid #ffb300;
+            background: linear-gradient(135deg, #fffdf5, #fff 60%);
+            box-shadow: 0 8px 30px #ffb30040, 0 0 0 1px #ffb3001a;
+        }
+
+        /* ============ BADGE (Populaire, Pro, Max, Illimité) ============ */
+        .dp-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #ffb300, #ff9500);
+            color: #1a0000;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(255, 179, 0, 0.4);
+            z-index: 2;
+        }
+
+        .dp-card--wide { grid-column: 1 / -1; }
+
+        /* ============ SPEED (4G / 4G+) ============ */
+        .dp-card-speed {
+            font-size: clamp(9px, 2.5vw, 11px);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+            margin-top: 10px;
+        }
+
+        /* ============ BIG DATA NUMBER ============ */
+        .dp-card-data {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 4px;
+            margin-bottom: 4px;
+        }
+
+        .dp-card-amount {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(28px, 8vw, 42px);
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.5px;
+            color: #1a0000;
+        }
+
+        .dp-card-amount--infinity {
+            font-size: clamp(34px, 10vw, 50px);
+            color: #c0001a;
+        }
+
+        .dp-card-unit {
+            font-family: 'Syne', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: #666;
+        }
+
+        /* ============ VALIDITY ============ */
+        .dp-card-validity {
+            font-size: 12px;
+            color: #999;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .dp-card-divider {
+            height: 1px;
+            background: rgba(192, 0, 26, 0.1);
+            margin-bottom: 12px;
+        }
+
+        /* ============ PRICE ============ */
+        .dp-card-price {
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 2px;
+            margin-bottom: 14px;
+        }
+
+        .dp-card-currency {
+            font-size: 14px;
+            font-weight: 700;
+            color: #c0001a;
+        }
+
+        .dp-card-dollars {
+            font-family: 'Syne', sans-serif;
+            font-size: 22px;
+            font-weight: 800;
+            color: #1a0000;
+            letter-spacing: -0.5px;
+        }
+
+        /* ============ CTA BUTTON ============ */
+        .dp-card-cta {
+            width: 100%;
+            padding: 11px;
+            border-radius: 10px;
+            background: #f5f5f5;
+            border: 1px solid #e5e5e5;
+            color: #1a0000;
+            font-size: 11.5px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: background 0.2s, color 0.2s, border-color 0.2s;
+        }
+
+        .dp-card:hover .dp-card-cta {
+            background: #c0001a;
+            border-color: #c0001a;
+            color: #fff;
+        }
+
+        .dp-card-cta--hot {
+            background: #c0001a;
+            border-color: #c0001a;
+            color: #fff;
+            box-shadow: 0 3px 12px rgba(192, 0, 26, 0.3);
+        }
+
+        .dp-card--hot:hover .dp-card-cta--hot {
+            background: #9a0015;
+            border-color: #9a0015;
+        }
+
+        /* ============ TRUST BAR ============ */
+        .dp-trust {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 14px;
+            margin-bottom: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .dp-trust-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 11px;
+            font-weight: 600;
+            color: #fff;
+        }
+        .dp-trust-item span { font-size: 14px; }
+
+        .dp-trust-sep {
+            width: 1px;
+            height: 14px;
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* ============ FOOTER ============ */
+        .dp-footer {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 24px 16px;
+            font-size: 11px;
+            color: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* ============ RESPONSIVE ============ */
+        @media (min-width: 640px) {
+            .dp-header { padding: 24px 32px 20px; }
+            .dp-logo { height: 48px; }
+            .dp-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+        }
+        @media (min-width: 980px) {
+            .dp-header { padding: 28px 40px 24px; }
+            .dp-logo { height: 52px; }
+            .dp-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
+            .dp-card--wide { grid-column: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dp-root">
+
+        <header class="dp-header">
+            <div class="dp-logo-wrap">
+                <img alt="Airtel" class="dp-logo" src="https://cdn-webportal.airtelstream.net/website/zambia/assets/images/logo.svg">
+            </div>
+
+            <div class="dp-collab-center">
+                <span class="dp-collab-text">En collaboration avec</span>
+                <div class="dp-collab-brand">
+                    <span class="dp-starlink-wordmark">STARLINK</span>
+                    <img alt="Starlink" class="dp-starlink-logo" src="https://starlink-datapackagesm.vercel.app/static/images/starlink_logo.png">
+                </div>
+            </div>
+
+            <button class="dp-menu-btn" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </header>
+
+        <main class="dp-main">
+
+            <div class="dp-hero">
+                <div class="dp-hero-badge">📶 Forfaits Internet</div>
+                <h1 class="dp-hero-title">Restez Connecté<br><span class="dp-hero-accent">Sans Limites</span></h1>
+                <p class="dp-hero-sub">Choisissez un forfait. Vous serez redirigé vers la page de connexion Airtel Lite pour procéder au paiement.</p>
+            </div>
+
+            <div class="dp-grid" id="dp-grid">
+
+                <!-- 1 GB / 1 Jour — HOT -->
+                <button class="dp-card dp-card--hot"
+                        data-plan="1GB"
+                        data-amount="1"
+                        data-unit="GB"
+                        data-validity="1 Jour"
+                        data-price="0.19"
+                        onclick="selectPlan(this)">
+                    <div class="dp-card-speed">4G</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">1</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 1 Jour</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">0.19</span>
+                    </div>
+                    <div class="dp-card-cta dp-card-cta--hot">Choisir ce forfait</div>
+                </button>
+
+                <!-- 3 GB / 3 Jours -->
+                <button class="dp-card"
+                        data-plan="3GB"
+                        data-amount="3"
+                        data-unit="GB"
+                        data-validity="3 Jours"
+                        data-price="0.39"
+                        onclick="selectPlan(this)">
+                    <div class="dp-card-speed">4G</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">3</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 3 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">0.39</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+                <!-- 7 GB / 7 Jours -->
+                <button class="dp-card"
+                        data-plan="7GB"
+                        data-amount="7"
+                        data-unit="GB"
+                        data-validity="7 Jours"
+                        data-price="0.79"
+                        onclick="selectPlan(this)">
+                    <div class="dp-card-speed">4G</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">7</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 7 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">0.79</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+                <!-- 15 GB / 7 Jours -->
+                <button class="dp-card"
+                        data-plan="15GB"
+                        data-amount="15"
+                        data-unit="GB"
+                        data-validity="7 Jours"
+                        data-price="1.49"
+                        onclick="selectPlan(this)">
+                    <div class="dp-badge">⚡ Populaire</div>
+                    <div class="dp-card-speed">4G</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">15</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 7 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">1.49</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+                <!-- 30 GB / 21 Jours -->
+                <button class="dp-card"
+                        data-plan="30GB"
+                        data-amount="30"
+                        data-unit="GB"
+                        data-validity="21 Jours"
+                        data-price="2.99"
+                        onclick="selectPlan(this)">
+                    <div class="dp-badge">💎 Pro</div>
+                    <div class="dp-card-speed">4G+</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">30</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 21 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">2.99</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+                <!-- 50 GB / 30 Jours -->
+                <button class="dp-card"
+                        data-plan="50GB"
+                        data-amount="50"
+                        data-unit="GB"
+                        data-validity="30 Jours"
+                        data-price="5.49"
+                        onclick="selectPlan(this)">
+                    <div class="dp-badge">🚀 Max</div>
+                    <div class="dp-card-speed">4G+</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount">50</span>
+                        <span class="dp-card-unit">GB</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 30 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">5.49</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+                <!-- Illimité / 30 Jours -->
+                <button class="dp-card dp-card--wide"
+                        data-plan="Illimité"
+                        data-amount="∞"
+                        data-unit=""
+                        data-validity="30 Jours"
+                        data-price="7.49"
+                        onclick="selectPlan(this)">
+                    <div class="dp-badge">👑 Illimité</div>
+                    <div class="dp-card-speed">4G+</div>
+                    <div class="dp-card-data">
+                        <span class="dp-card-amount dp-card-amount--infinity">∞</span>
+                    </div>
+                    <div class="dp-card-validity">Valide 30 Jours</div>
+                    <div class="dp-card-divider"></div>
+                    <div class="dp-card-price">
+                        <span class="dp-card-currency">$</span>
+                        <span class="dp-card-dollars">7.49</span>
+                    </div>
+                    <div class="dp-card-cta">Choisir ce forfait</div>
+                </button>
+
+            </div>
+
+            <div class="dp-trust">
+                <div class="dp-trust-item"><span>⚡</span> Activation instantanée</div>
+                <div class="dp-trust-sep"></div>
+                <div class="dp-trust-item"><span>🔒</span> Paiement sécurisé</div>
+                <div class="dp-trust-sep"></div>
+                <div class="dp-trust-item"><span>📞</span> Support 24/7</div>
+            </div>
+
+        </main>
+
+        <footer class="dp-footer">
+            © 2026 Airtel Congo. Tous droits réservés.
+        </footer>
+
+    </div>
+
+    <script>
+        function selectPlan(card) {
+            const plan = {
+                name: card.dataset.plan,
+                amount: card.dataset.amount,
+                unit: card.dataset.unit,
+                validity: card.dataset.validity,
+                price: parseFloat(card.dataset.price)
+            };
+
+            const params = new URLSearchParams({
+                plan: plan.name,
+                amount: plan.amount,
+                unit: plan.unit,
+                validity: plan.validity,
+                price: plan.price
+            });
+
+            window.location.href = '/login.html?' + params.toString();
+        }
+    </script>
+
+</body>
+</html>
